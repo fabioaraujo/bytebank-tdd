@@ -26,6 +26,20 @@ class Funcionario:
         if(valor > 1000):
             valor = 0
         return valor
+    
+    def sobrenome(self):
+        nome_completo = self.nome.strip()
+        nome_quebrado = nome_completo.split(' ')
+        return nome_quebrado[-1]
+
+    def __eh_socio(self) -> bool:
+        sobrenomes = ['Bragança', 'Windsor', 'Bourbon', 'Yamato', 'Al Saud', 'Khan', 'Tudor', 'Ptolomeu']
+        return (self.sobrenome() in sobrenomes)
+
+    def decrescimo_salario(self):
+        
+        if self.__salario >= 100000 and self.__eh_socio():
+            self.__salario = self.__salario * 0.9
 
     def __str__(self):
         return f'Funcionario ({self.__nome}, {self.__data_nascimento}, {self.__salario})'
